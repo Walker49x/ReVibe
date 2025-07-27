@@ -1,0 +1,204 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+
+  - intent: ask_question
+    examples: |
+      - Can you provide information about your services?
+      - What does this website do?
+      - What services do you offer?
+      - Do you offer any discounts?
+      - How can I contact customer support?
+      - What are your payment methods?
+
+  - intent: apply_discount
+    examples: |
+      - Can I apply a discount code?
+      - How do I use a coupon?
+      - Apply discount to my order
+      - Redeem voucher code
+
+  - intent: ask_payment_info
+    examples: |
+      - What payment methods do you accept?
+      - How do I pay for my order?
+      - Payment options available
+      - Can I pay with COD?
+
+  - intent: ask_delivery_info
+    examples: |
+      - When will my order arrive?
+      - Delivery time for my order?
+      - Shipping details for my purchase
+      - Can you provide tracking information?
+
+  - intent: cancel_order
+    examples: |
+      - Cancel my order
+      - I want to cancel my purchase
+      - Remove my order
+      - Cancel my transaction
+
+  - intent: ask_return_policy
+    examples: |
+      - What is your return policy?
+      - How do I return an item?
+      - Return procedure
+      - Can I exchange my product?
+
+  - intent: ask_about_promotion
+    examples: |
+      - Are there any ongoing promotions?
+      - Do you have any special offers?
+      - Promotional deals available?
+
+  - intent: help
+    examples: |
+      - I need assistance
+      - Help me
+      - Can you assist me?
+      - I'm confused, can you help?
+
+  - intent: ask_shipping_cost
+    examples: |
+      - How much is shipping for [product]?
+      - What are the shipping charges?
+      - Do you offer free shipping?
+
+  - intent: ask_order_status
+    examples: |
+      - What is the status of my order?
+      - Can you check my order status?
+      - Where is my package?
+      - Can I replace my order?
+      - I want to replace an item
+      - Defective product
+      - Bad quality item
+
+  - intent: ask_account_related_info
+    examples: |
+      - How do I create an account?
+      - Can I change my account details?
+      - What are the benefits of creating an account?
+
+  - intent: ask_contact_info
+    examples: |
+      - How can I contact customer support?
+      - What is your customer service email?
+      - Can I speak to a representative?
+
+  - intent: ask_warranty_info
+    examples: |
+      - Does [product] come with a warranty?
+      - What is the warranty period for [product]?
+      - How do I claim warranty for a product?
+
+  - intent: ask_website_not_working
+    examples: |
+      - Why the website is not working?
+      - The website is displaying errors
+      - Why am I not able to place orders?
+      - Why is the search functionality not working correctly?
+
+  - intent: ask_bot_info
+    examples: |
+      - Are you a chatbot?
+      - Are you a bot?
+      - Am I talking to a bot?
+      - Am I talking to a person?
+      - Who are you?
+
+  - intent: ask_purchase_guide
+    examples: |
+      - How can I purchase a product?
+      - How can I buy anything?
+      - How can I pay?
+      - Guide me for purchase?
+
+  - intent: ask_seller_guide
+    examples: |
+      - How can I sell my item?
+      - Can I list my item on your website?
+      - Can I add another element in my listings?
+      - How to sell item on revibe?
+
+  - intent: ask_update_guide
+    examples: |
+      - Can I update the item information I have listed?
+      - Can I edit the my item info?
+      - How to edit my item info?
+      - How to change the price of my listed item?
+
+  - intent: ask_login_guide
+    examples: |
+      - How can I create an account?
+      - How can I login in my account?
+      - How can I signout from my account?
+      - Can I create two accounts at a same time?
+      - Can I login via google?
+
+  - intent: ask_forget_password
+    examples: |
+      - I forgot my password.
+      - How can I change my password?
+      - I want to change my account password
+      - How can I login in my account if I have forgot my password?
+      - I forgot my username
+      - How can I reset my password?
+
+  - intent: ask_search_guide
+    examples: |
+      - How can I search for a perticular product?
+      - How can I look for a specific product?
+      - I want to search different category product?
+      - Can I use voice search?
+      - How to use voice search?
+      - How to find a product?
+      - How to find an item?

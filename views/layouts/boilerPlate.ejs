@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- AOS to import scroll animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/ratings.css" />
+
+    <!-- MAPS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@botfront/rasa-webchat/dist/index.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/@botfront/rasa-webchat/dist/index.min.js"></script>
+    <title>ReVibe</title>
+  </head>
+  <body>
+
+    <%- include("../includes/navbar.ejs") %>
+    <div class="container">
+      <%- include("../includes/flash.ejs") %><%- body %>
+      <!-- CHATBOT -->
+      <div class="chatbot" onclick="hide()">
+        <i class="fa-solid fa-comments" id="chatbotIcon" style="color: white;"></i>
+      </div>
+      <div class="chat-container">
+        <div class="bot-header">
+          <div class="header-image"></div>
+          <p class="bot-name">Chatbot Support - Team ReVibe</p>
+        </div>
+        <div class="chat-log" id="chat-log">
+          <!-- Chat log will be updated here -->
+        </div>
+        <div class="chat-input">
+          <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off">
+            <button type="submit" class="chatSend"><i class="fa-solid fa-paper-plane chatSendIcon"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include("../includes/footer.ejs") %>
+
+    <!-- Scripts -->
+    <script src="/js/javascript"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 100,
+        duration: 800,
+      });
+
+      // Map
+      var map = L.map('map');
+      let lat = 25.45;
+      let long = 81.85;
+      map.setView([lat, long], 13);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var customMarker = L.marker([lat,long]).addTo(map);
+        customMarker.bindPopup("<b>Current Location</b>").openPopup();
+
+
+      navigator.geolocation.watchPosition(success, error);
+
+      var popup = L.popup();
+
+      function onMapClick(e) {
+          // Get latitude and longitude from the click event
+          const { lat, lng } = e.latlng;
+
+          // Construct the URL for the Nominatim API
+          const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`;
+
+          // Send a request to the Nominatim API
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              // Extract the location name from the API response
+              const locationName = data.display_name;
+
+              // Display the location name
+              popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + locationName)
+                .openOn(map);
+            })
+            .catch(error => {
+              console.error('Error fetching location:', error);
+            });
+        }
+
+        // Register the map click event handler
+        map.on('click', onMapClick);
+
+      let marker, circle, zoomed;
+
+      function success(pos){
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+        const accuracy = pos.coords.accuracy;
+
+        if (marker) {
+          map.removeLayer(marker);
+          map.removeLayer(circle);
+        }
+
+        marker = L.marker([lat,lon]).addTo(map);
+        circle = L.circle([lat,lon],{ radius : accuracy }).addTo(map);
+
+        if(!zoomed) {
+          zoomed = map.fitBounds(circle.getBounds());
+        }
+
+        map.setView([lat,lon]);
+      }
+
+      function error(err) {
+        if (err.code === 1) {
+          alert("Please allow your location access");
+        } else {
+          alert("Cannot get current location");
+        }
+      }
+    </script>
+
+    <!-- Chatbot -->
+    <script>
+      let box = document.querySelector(".chat-container");
+        function hide() {
+          if (box.style.display === "none") {
+            box.style.display = "block";
+          }
+          else {
+            box.style.display = "none";
+          }
+        };
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $('#chat-form').on('submit', function (e) {
+          e.preventDefault();
+
+          const userInput = $('#user-input').val().trim();
+          if (userInput === '') {
+            return;
+          }
+
+          // Clear the input field
+          $('#user-input').val('');
+
+          // Append user message to chat log
+          $('#chat-log').append('<div class="user-reply"><div class="user-image"></div>' + '<div class="chat-message user user-chat-message">' + 'User : ' + userInput + '</div></div>');
+
+          // Send user input to the server
+          $.ajax({
+            url: '/chat',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+              text: userInput,
+              sender_id: 'default_user'
+            }),
+            success: function (data) {
+              // Append bot response to chat log
+              data.forEach(function (message) {
+                $('#chat-log').append('<div class="bot-reply"><div class="bot-image"></div>' + '<div class="chat-message bot bot-chat-message">' + 'Bot : ' + message.text + '</div></div>');
+              });
+            },
+            error: function () {
+              console.error('Error communicating with server');
+            }
+          });
+        });
+      });
+    </script>
+
+  
+  </body>
+</html>

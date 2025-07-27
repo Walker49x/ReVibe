@@ -1,0 +1,126 @@
+<nav class="navbar navbar-expand-lg bg-body-light sticky-top shadow-sm ">
+    <div class="container-fluid">
+      <i class="fa-brands fa-rev fa-rotate-90" style="margin: 0 .4rem 0 5.5rem; font-size: 2.5rem;color: #FC2E20;"></i>
+      <a class="navbar-brand" href="#">ReVibe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Explore</a>
+          <% if(currUser) { %>
+              <a href="/listings/<%= currUser._id %>/favourates" class="nav-link">Favourites</a>
+            <% } %>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <!-- SEARCH -->
+          <form class="searchForm" action="/listings/search" method="post" style="display: flex;" onsubmit="clear()">
+            <input class="form-control me-2" id="search-inp"  name="searchField" type="search" placeholder="Search item" style="border-radius: 25px; padding: 0.5rem 3rem; font-size: 1rem; border: 1px solid black;">
+            <!-- <button type="button" class="btn nav-search-btn" id="search-mic"><i class="fa-solid fa-microphone"></i></button> -->
+            &nbsp;&nbsp;<button class="btn nav-search-btn" id="submit" type="submit"><i class="fa-solid fa-magnifying-glass" style="display: inline; margin-right: .6rem;"></i>Search</button>
+          </form>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Create a listing</a>
+          <% if(!currUser) { %>
+            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/signup">Signup</a>
+          <% } %>
+          <% if(currUser) { %>
+            <a class="nav-link" href="/logout" style="margin-right: 2rem;">Logout</a>
+          <% } %>
+          <div class="theme" style="font-size: 1.7rem; margin-right: 1rem; margin-top: 0.2rem; cursor: pointer;">
+            <i class="fa-solid fa-moon" id="icon" style="color: orange;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+</nav>
+
+<script>
+  let btn = document.getElementById("submit");
+  let searchInp = document.getElementById("search-inp");
+  function clear() {
+    // console.log("Nice");
+    searchInp.innerText = "";
+  }
+
+  // JavaScript to toggle dark mode using the icon
+    document.addEventListener('DOMContentLoaded', function () {
+      const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+
+      if (darkModeEnabled) {
+        document.body.classList.add('dark-theme');
+      } else {
+        document.body.classList.remove('dark-theme');
+      }
+    });
+
+    const toggleDarkMode = () => {
+      const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+
+      if (darkModeEnabled) {
+        localStorage.setItem('darkMode', false);
+        document.body.classList.remove('dark-theme');
+        icon.className = "fa-solid fa-sun";
+      } else {
+        localStorage.setItem('darkMode', true);
+        document.body.classList.add('dark-theme');
+        icon.className = "fa-solid fa-moon";
+      }
+    };
+
+    // Attach event listener to the icon
+    const icon = document.querySelector('#icon');
+    icon.addEventListener('click', toggleDarkMode);
+
+
+    // Voice search
+    const searchForm = document.getElementsByClassName("searchForm");
+    const searchFormInput = document.getElementById('search-inp');
+    const speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+
+    if(speechRecognition) {
+
+      searchInp.insertAdjacentHTML("afterend", '<button type="button" class="btn nav-search-btn" id="search-mic"><i class="fa-solid fa-microphone"></i></button>')
+      const micBtn = document.getElementById('search-mic');
+      const micIcon = document.querySelector('.fa-microphone');
+
+      const recognition = new speechRecognition();
+      // recognition.continuous = true; // Jaise bolna band ek result generate hoga par mic off nhi hoga
+
+      micBtn.addEventListener("click", micBtnClick);
+
+      function micBtnClick() {
+        if (micIcon.classList.contains("fa-microphone")) {
+          recognition.start();
+        } else {
+          recognition.stop();
+        }
+      }
+
+      recognition.addEventListener("start", startSpeechRecognition);
+      function startSpeechRecognition() {
+        micIcon.classList.remove("fa-microphone");
+        micIcon.classList.add("fa-microphone-slash");
+        searchFormInput.focus();
+      }
+
+      recognition.addEventListener("end", endSpeechRecognition);
+      function endSpeechRecognition() {
+        micIcon.classList.remove("fa-microphone-slash");
+        micIcon.classList.add("fa-microphone");
+        searchFormInput.focus();
+      }
+
+      recognition.addEventListener('result',(event)=>{
+        // console.log(event);
+        const transcript = event.results[0][0].transcript;
+        searchFormInput.value = transcript;
+      });
+
+    } else {
+      console.log("Your browser doesn't support speech recognition");
+    }
+
+</script>

@@ -1,0 +1,29 @@
+<% layout("/layouts/boilerPlate") %>
+
+<div class="row offset-3 col-6" style="margin-top: 3rem; margin-bottom: 3rem;">
+    <form method="post" action="/chat/:id" novalidate class="needs-validation listing-inputs" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="query" class="form-label">Query</label>
+            <textarea placeholder="Enter query" autocomplete="off" class="form-control" name="query" required></textarea>
+            <div class="invalid-feedback">Please provide a query.</div>
+        </div>
+        <div class="mb-3">
+            <label for="offer" class="form-label">Price</label>
+            <input type="number" placeholder="Enter the offer" autocomplete="off" class="form-control" name="offer" required>
+            <div class="invalid-feedback">Please provide a description.</div>
+        </div>
+        <button class="btn btn-dark addBtn" class="mb-3"
+            style="background-color: #fe424d; border: none; width: 6rem; padding: .5rem; border: 2px solid black;">
+            Send
+        </button>
+    </form>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function () {
+        emailjs.init({
+            publicKey: "eNA5Ys48qL5cTzPX2",
+        });
+    })();
+</script>

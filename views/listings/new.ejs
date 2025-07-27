@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerPlate") %>
+<div class="row">
+    <div class="offset-2 col-8 mt-3">
+        <form method="post" action="/listings" novalidate class="needs-validation listing-inputs" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="listing[title]" placeholder="Enter the title" autocomplete="off"  class="form-control" required>
+                <div class="invalid-feedback">Please provide a title.</div>  
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="listing[description]" placeholder="Enter description" autocomplete="off"  class="form-control" required></textarea>
+                <div class="invalid-feedback">Please provide a description.</div>  
+            </div>
+            <div class="row">
+                <div class="mb-3 col-8">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" name="listing[price]" placeholder="Enter the price" autocomplete="off"  class="form-control" required>
+                    <div class="invalid-feedback">Please provide a price.</div>  
+                </div>
+                <div class="dropboxes col-4" style="margin-top: 2.1rem;">
+                    <div class="dropdown">
+                        <select name="listing[category]" id="category" style="height: 2.25rem; padding: 0rem 1rem; width: 17rem; border-radius: 5px; font-size: 0.9rem; border: 1px solid grey;">
+                            <option selected>Select Category</option>
+                            <option value="rooms">Rooms</option>
+                            <option value="kitchen">Kitchen</option>
+                            <option value="digital">Digital appliences</option>
+                            <option value="mobile">Mobile phones</option>
+                            <option value="home">Home appliences</option>
+                            <option value="vehicle">Vehicles</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input name="listing[image]" type="file" autocomplete="off"  class="form-control" required>
+                <div class="invalid-feedback">Please provide a image link/URL.</div>  
+            </div>
+            <div class="row">
+                <div class="mb-3 col-8">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="listing[location]" placeholder="Enter the location" autocomplete="off"  class="form-control" required>
+                    <div class="invalid-feedback">Please provide a location.</div>  
+                </div>
+                <div class="mb-3 col-4">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="listing[country]" placeholder="Enter the country" autocomplete="off"  class="form-control" required>
+                    <div class="invalid-feedback">Please provide a country.</div>  
+                </div>
+            </div>
+            <button class="btn btn-dark addBtn" class="mb-3" style="background-color: #fe424d; border: none; width: 6rem; padding: .5rem; border: 2px solid black;">
+                Add
+            </button> 
+        </form>
+    </div>
+</div>

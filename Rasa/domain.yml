@@ -1,0 +1,110 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - ask_question
+  - apply_discount
+  - ask_payment_info
+  - ask_delivery_info
+  - cancel_order
+  - ask_return_policy
+  - ask_about_promotion
+  - help
+  - ask_shipping_cost
+  - ask_order_status
+  - ask_account_related_info
+  - ask_contact_info
+  - ask_warranty_info
+  - ask_website_not_working
+  - ask_bot_info
+  - ask_purchase_guide
+  - ask_seller_guide
+  - ask_update_guide
+  - ask_login_guide
+  - ask_forget_password
+  - ask_search_guide
+  - fallback
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_ask_question:
+    - text: "Sure, I am your AI assistant will guide you to use ReVibe, feel free to ask me anything."
+
+  utter_apply_discount:
+    - text: "You can apply a discount code and several couppns during checkout. Also the vouchers could also be used"
+
+  utter_ask_payment_info:
+    - text: "We accept various payment methods including credit/debit cards, PayPal, and COD. You can pay at the time of purchase or enjoy cash on delivery"
+
+  utter_ask_delivery_info:
+    - text: "Your order's estimated delivery time depends on your location. You can track your order for more details. When our delivery partner will arrive at you, you will be surely notified."
+
+  utter_cancel_order:
+    - text: "To cancel your order, please contact our customer support team."
+
+  utter_ask_return_policy:
+    - text: "Our return policy allows you to return items within 30 days of purchase. Visit our website for more details. Also, you could exchange your product depending on the T&Cs."
+
+  utter_ask_about_promotion:
+    - text: "We often have promotions and special offers. Check our website or subscribe to our newsletter for updates."
+
+  utter_help:
+    - text: "How can I assist you today? Feel free to ask any questions you have."
+
+  utter_ask_product_availability:
+    - text: "Please let me know which product you're interested in, and I'll check its availability for you."
+
+  utter_ask_shipping_cost:
+    - text: "Shipping costs depend on the destination and the weight of your order. Please provide more details for an accurate quote. Also some deals offer you to grad free deliveries!"
+
+  utter_ask_order_status:
+    - text: "To check your order status or replace your order, please provide your order number or contact our customer support team."
+
+  utter_ask_account_related_info:
+    - text: "You can create an account on our website to enjoy benefits such as order tracking and exclusive offers. Visit our website for more information."
+
+  utter_ask_contact_info:
+    - text: "For customer support, you can contact us via email at revibe/support@email.com or call our helpline at +1234567899."
+
+  utter_ask_warranty_info:
+    - text: "Product warranties vary depending on the item. Please provide the product name or visit our website for warranty information."
+
+  utter_website_showing_error:
+    - text: "There could be an internal issue with our servers or you internet connection may be dissrupted. Please check your internet connection or contact customer support."
+
+  utter_your_info:
+    - text: "I am a custom AI developed by ReVibe...How can I help you?"
+
+  utter_purchase_guide:
+    - text: "First login to you account or create a new account.\nThen choose the product which you want to buy and click on purchase.\nMake your payment and the order will be dispatched to your address"
+
+  utter_sell_guide:
+    - text: "You can sell your item on item by listing it. Firstly, create an account on ReVibe, click on 'create listing' option on navbar to create a new listing or to list your item. Then fill the complete details about the product you want to list and give the required category. Your product will get listed and all the people will be able to see and purchase it!"
+
+  utter_update_guide:
+    - text: "You can certainly change the details of the listing you have updated. To do so, login to your account and go to your listing. Click on edit button and edit the details and update your selected listing. The listing will get updated."
+
+  utter_login_guide:
+    - text: "Click on the signup button on the navbar if you are new to ReVibe and create a new account by giving the requrired details, otherwise click on login. You can directly login to your account by logging in via gmail id and enjoy our services!!!"
+
+  utter_forget_password:
+    - text: "If you have forgot your password or want to reset your password, you can do so by clicking on the forgot password link in the login page. You have to authenticate via email that it's you. After authentication, you will be able to reset your password."
+
+  utter_search_guide:
+    - text: "You can look for a product by going to the different categories or searching the product in the search box. You can use voice search too by clicking in the mic button beside the search box and clicking search button."
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

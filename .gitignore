@@ -1,0 +1,7 @@
+node_modules/
+Rasa/env/Lib
+# Rasa/actions
+# Rasa/data
+# Rasa/models
+# Rasa/tests
+# Rasa/.rasa

@@ -1,0 +1,36 @@
+<% layout("/layouts/boilerPlate") %>
+<div class="row">
+    <div class="offset-2 col-8 mt-3">
+        <form method="post" action="/listings/<%= listing._id %>?_method=put" class="needs-validation listing-inputs" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="listing[title]" class="form-control" autocomplete="off" value=<%= listing.title %>>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="listing[description]"  class="form-control" autocomplete="off"><%= listing.description %></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" name="listing[price]"  class="form-control" autocomplete="off"  value=<%= listing.price %>>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input name="listing[image]"  class="form-control" type="file">
+            </div>
+            <div class="row">
+                <div class="mb-3 col-8">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="listing[location]"  class="form-control" autocomplete="off"  value=<%= listing.location %>>
+                </div>
+                <div class="mb-3 col-4">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="listing[country]"  class="form-control" autocomplete="off"  value=<%= listing.country %>>
+                </div>
+            </div>
+            <button class="btn btn-dark addBtn" class="mb-3" style="background-color: #ff5b00; border: none; width: 6rem; padding: .5rem; border: 2px solid black;  ">
+                Edit
+            </button> 
+        </form>
+    </div>
+</div>

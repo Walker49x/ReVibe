@@ -1,0 +1,109 @@
+version: "3.1"
+
+stories:
+  - story: greet and ask question
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_question
+      - action: utter_ask_question
+
+  - story: apply discount
+    steps:
+      - intent: apply_discount
+      - action: utter_apply_discount
+
+  - story: ask payment info
+    steps:
+      - intent: ask_payment_info
+      - action: utter_ask_payment_info
+
+  - story: ask delivery info
+    steps:
+      - intent: ask_delivery_info
+      - action: utter_ask_delivery_info
+
+  - story: cancel order
+    steps:
+      - intent: cancel_order
+      - action: utter_cancel_order
+
+  - story: ask return policy
+    steps:
+      - intent: ask_return_policy
+      - action: utter_ask_return_policy
+
+  - story: ask about promotion
+    steps:
+      - intent: ask_about_promotion
+      - action: utter_ask_about_promotion
+
+  - story: ask for help
+    steps:
+      - intent: help
+      - action: utter_help
+
+  - story: inquire about shipping cost
+    steps:
+      - intent: ask_shipping_cost
+      - action: utter_ask_shipping_cost
+
+  - story: inquire about order status
+    steps:
+      - intent: ask_order_status
+      - action: utter_ask_order_status
+
+  - story: inquire about account-related information
+    steps:
+      - intent: ask_account_related_info
+      - action: utter_ask_account_related_info
+
+  - story: inquire about contact information
+    steps:
+      - intent: ask_contact_info
+      - action: utter_ask_contact_info
+
+  - story: inquire about warranty information
+    steps:
+      - intent: ask_warranty_info
+      - action: utter_ask_warranty_info
+
+  - story: inquire about any potential error
+    steps:
+      - intent: ask_website_not_working
+      - action: utter_website_showing_error
+
+  - story: inquire about bot
+    steps:
+      - intent: ask_bot_info
+      - action: utter_your_info
+
+  - story: inquire how to purchase
+    steps:
+      - intent: ask_purchase_guide
+      - action: utter_purchase_guide
+
+  - story: inquire how to sell
+    steps:
+      - intent: ask_seller_guide
+      - action: utter_sell_guide
+
+  - story: ask how to update
+    steps:
+      - intent: ask_update_guide
+      - action: utter_update_guide
+
+  - story: ask how to login
+    steps:
+      - intent: ask_login_guide
+      - action: utter_login_guide
+
+  - story: ask how to reset password
+    steps:
+      - intent: ask_forget_password
+      - action: utter_forget_password
+
+  - story: ask how to search a product
+    steps:
+      - intent: ask_search_guide
+      - action: utter_search_guide

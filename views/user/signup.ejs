@@ -1,0 +1,33 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="signup-row">
+    <div class="mt-5 shadow-sm signup-form" style="padding: 1rem;">
+        <h4><b>Sign-up on ReVibe</b></h4>
+        <form action="/signup"  method="post" class="needs-validation mt-5" novalidate> 
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input name="username" placeholder="Enter username" class="form-control" id="username" type="text" autocomplete="off" required>
+                <div class="invalid-feedback">Please provide a Username.</div>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Contact number: </label>
+                <input name="phone" placeholder="Enter Phobe Number" class="form-control" id="phone" type="number" autocomplete="off" required>
+                <div class="invalid-feedback">Please provide a Username.</div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input name="email" placeholder="Enter email" class="form-control" id="email" type="email" autocomplete="off" required>
+                <div class="invalid-feedback">Please provide your email.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" placeholder="Enter password" class="form-control" id="password" type="password" autocomplete="off" required>
+                <div class="invalid-feedback">Please provide a Password.</div>
+            </div>
+            <button class="btn btn-success">Sign-up</button>
+        </form>
+    </div>
+    <div class="signup-image">
+        <img src="/assets/signup.png" alt="">
+    </div>
+</div>

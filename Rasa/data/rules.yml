@@ -1,0 +1,112 @@
+version: "3.1"
+
+rules:
+  - rule: Respond to a greeting and ask a question
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Ask a question after greeting
+    steps:
+      - intent: ask_question
+      - action: utter_ask_question
+
+  - rule: Provide information about discounts
+    steps:
+      - intent: apply_discount
+      - action: utter_apply_discount
+
+  - rule: Provide information about payment methods
+    steps:
+      - intent: ask_payment_info
+      - action: utter_ask_payment_info
+
+  - rule: Provide information about delivery
+    steps:
+      - intent: ask_delivery_info
+      - action: utter_ask_delivery_info
+
+  - rule: Cancel an order
+    steps:
+      - intent: cancel_order
+      - action: utter_cancel_order
+
+  - rule: Provide information about the return policy
+    steps:
+      - intent: ask_return_policy
+      - action: utter_ask_return_policy
+
+  - rule: Provide information about promotions
+    steps:
+      - intent: ask_about_promotion
+      - action: utter_ask_about_promotion
+
+  - rule: Offer help
+    steps:
+      - intent: help
+      - action: utter_help
+
+  - rule: Provide information about shipping costs
+    steps:
+      - intent: ask_shipping_cost
+      - action: utter_ask_shipping_cost
+
+  - rule: Provide information about order status
+    steps:
+      - intent: ask_order_status
+      - action: utter_ask_order_status
+
+  - rule: Provide information about account-related details
+    steps:
+      - intent: ask_account_related_info
+      - action: utter_ask_account_related_info
+
+  - rule: Provide contact information
+    steps:
+      - intent: ask_contact_info
+      - action: utter_ask_contact_info
+
+  - rule: Provide information about warranties
+    steps:
+      - intent: ask_warranty_info
+      - action: utter_ask_warranty_info
+
+  - rule: Handle website errors
+    steps:
+      - intent: ask_website_not_working
+      - action: utter_website_showing_error
+
+  - rule: Provide information about the bot
+    steps:
+      - intent: ask_bot_info
+      - action: utter_your_info
+
+  - rule: Provide purchase guide
+    steps:
+      - intent: ask_purchase_guide
+      - action: utter_purchase_guide
+
+  - rule: Provide sell guide
+    steps:
+      - intent: ask_seller_guide
+      - action: utter_sell_guide
+
+  - rule: Provide update guide
+    steps:
+      - intent: ask_update_guide
+      - action: utter_update_guide
+
+  - rule: Provide login guide
+    steps:
+      - intent: ask_login_guide
+      - action: utter_login_guide
+
+  - rule: Provide password reset guide
+    steps:
+      - intent: ask_forget_password
+      - action: utter_forget_password
+
+  - rule: Provide search guide
+    steps:
+      - intent: ask_search_guide
+      - action: utter_search_guide

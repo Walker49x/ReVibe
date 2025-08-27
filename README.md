@@ -42,6 +42,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or suggestions regarding ReVibe, feel free to contact us at agchirag2605@gmail.com.
+If you have any questions or suggestions regarding ReVibe, feel free to contact us at singhanurag.og49@gmail.com
 
 Thank you for choosing ReVibe! Happy shopping!
